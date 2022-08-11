@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Watermark</title>
+        <link type="text/css" href="css/proj.css" rel="stylesheet" />
+
+		<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.6.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.6.custom.min.js"></script>
+		<script type="text/javascript" src="js/jquery-watermarker-0.3.js"></script>
+        <style type="text/css">
+            div.watermark
+            {
+                border:1px dashed #000;
+            }
+			
+            img.watermark:hover{
+                cursor:move;
+            }
+        </style>
+
+        <script type="text/javascript">
+			$().ready(function(){
+				$('#watermarked').Watermarker({
+					watermark_img:      'img/watermark.png',
+					opacity:            0.5,
+					opacitySlider:      $('#sliderdiv'),
+					position:           'center',
+					onChange:           showCoords
+				});
+			});
+			
+			function showCoords(c)
+			{
+				$('#x').val(c.x);
+				$('#y').val(c.y);
+				$('#w').val(c.w);
+				$('#h').val(c.h);
+				$('#a').val(c.opacity);
+			};
+			
+			/*$().ready(function(){
+				$('#watermarked').Watermarker({
+					watermark_img:      'img/watermark.png',
+					position:      'bottomtop'
+				});
+			});*/
+			
+			$().ready(function(){
+				$('#watermarked').Watermarker({
+					watermark_img:      'img/watermark.png',
+					opacity:      0.5,
+					position:      'bottomleft'
+				});
+			});
+			
+			$().ready(function(){
+				$('#watermarked').Watermarker({
+					watermark_img:      'img/watermark.png',
+					position:      'bottomright'
+				});
+			});
+			
+			$().ready(function(){
+				$('#watermarked').Watermarker({
+					watermark_img:      'img/watermark.png',
+					x:      50,
+					y:      80
+				});
+			});
+			
+			$().ready(function(){
+				$('#watermarked').Watermarker({
+					watermark_img:      'img/watermark.png',
+					position:      'bottomcenter',
+					w:      '50%',
+					h:      '56px'
+				});
+			});
+			
+			/*
+				Position Value:
+				topleft
+				topcenter
+				topright
+				centerleft
+				centercenter
+				center (raccourci pour centercenter)
+				centerright
+				bottomleft
+				bottomcenter
+				bottomright
+			*/
+			
+			//Reference:
+			//Demo Link: https://fmaz.developpez.com/proj/imgwatermark/demo.html
+			//https://fmaz.developpez.com/proj/imgwatermark/doc.html
+			//https://fmaz.developpez.com/proj/imgwatermark/doc.html
+			
+        </script>
+	</head>
+	<body>     
+        <h1>Image Watermark</h1>
+        <br />
+        X: <input type="text" id="x" name="x" value="" style="width:30px;" />
+        Y: <input type="text" id="y" name="y" value="" style="width:30px;" />
+        W: <input type="text" id="w" name="w" value="" style="width:30px;" />
+        H: <input type="text" id="h" name="h" value="" style="width:30px;" />
+        A: <input type="text" id="a" name="a" value="" style="width:30px;" />
+        <br />
+        <br />
+        <img src="img/base_image.jpg" id="watermarked" />
+        <br />
+        Opacite: <div id="sliderdiv" style="width:200px;"></div>
+        <br />
+        <br />
+	</body>
+</html>
